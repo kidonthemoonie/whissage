@@ -1,9 +1,3 @@
 <resources>
     <string name="app_name">Whissage</string>
-    <string name="login">Log in</string>
-    <string name="hint_login">Username</string>
-    <string name="login_button">Enter</string>
-    <string name="send_button">SEND</string>
-    <string name="message_hint">Enter message</string>
-    <string name="my_message_text">Hi, my message</string>
 </resources>
