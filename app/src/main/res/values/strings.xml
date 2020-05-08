@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Whissage</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log in</string>
+    <string name="skip">Skip</string>
 </resources>
