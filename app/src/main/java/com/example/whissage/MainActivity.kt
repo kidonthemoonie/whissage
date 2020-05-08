@@ -1,6 +1,5 @@
 package com.example.whissage
 
-
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -10,6 +9,8 @@ import org.json.JSONObject
 import java.security.Policy
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import android.content.Intent
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +19,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //        run()
+        //run()
+        val b = findViewById<Button>(R.id.skipButton)
+        b.setOnClickListener {
+            val i = Intent(this, ChatActivity::class.java)
+            startActivity(i)
+        }
     }
 
 //    fun run() {
