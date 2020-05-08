@@ -9,14 +9,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-    override fun onStart(){
+
+    override fun onStart() {
         super.onStart()
     }
-    override fun onResume(){
+
+    override fun onResume() {
         super.onResume()
     }
 
-    override fun onPause(){
+    override fun onPause() {
         super.onPause()
     }
 
