@@ -1,16 +1,10 @@
 package com.example.whissage
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import com.neovisionaries.ws.client.WebSocket
-import okhttp3.*
-import org.json.JSONObject
-import java.security.Policy
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.neovisionaries.ws.client.WebSocket
 
 class MainActivity : AppCompatActivity() {
 

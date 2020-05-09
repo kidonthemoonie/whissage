@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#54279F"
     tools:context=".ChatActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messageList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
+        android:layout_marginStart="10dp"
+        android:scrollbars="vertical"
+        android:background="#54279F"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="#542790"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/layout_messageArea"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/layout_messageArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:minHeight="48dp"
+        android:background="#54279F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
     <EditText
         android:id="@+id/enter_mess"
         android:hint="@string/enterMessage"
-        android:textColor="#120030"
-        android:layout_width="280dp"
+        android:textColorHint="#FFFFFF"
+        android:importantForAutofill="no"
+        android:textColor="#FFFFFF"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
+        android:inputType="textAutoCorrect"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
@@ -18,11 +55,14 @@
     <Button
         android:id="@+id/send"
         android:text="@string/send"
-        android:textColor="#120030"
-        android:layout_width="80dp"
+        android:textColor="#FFFFFF"
+        android:background="#120030"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/enter_mess"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
