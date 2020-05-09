@@ -8,7 +8,7 @@ import com.neovisionaries.ws.client.WebSocket
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var webSocket: WebSocket
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
