@@ -14,9 +14,7 @@
         <activity
             android:name=".ChatActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
 
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
