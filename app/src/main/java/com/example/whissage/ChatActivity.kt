@@ -11,34 +11,29 @@ import kotlin.concurrent.thread
 
 class ChatActivity : AppCompatActivity() {
 
-    lateinit var webSocket: WebSocket
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-
-
-        thread(){
+        thread() {
             // Create a WebSocket with a socket connection timeout value.
-                val ws = WebSocketFactory().createSocket("wss://echo.websocket.org", 5000)
+            val ws = WebSocketFactory().createSocket("ws://185.185.70.69/ws/", 5000)
 
-                // Register a listener to receive WebSocket events.
-                ws.addListener(object : WebSocketAdapter() {
+            // Register a listener to receive WebSocket events.
+            ws.addListener(object : WebSocketAdapter() {
                 override fun onTextMessage(websocket: WebSocket?, text: String?) {
                     super.onTextMessage(websocket, text)
-                    Log.e("WSS", "text")
+                    Log.e("WS", "text")
                 }
 
                 override fun onCloseFrame(websocket: WebSocket?, frame: WebSocketFrame?) {
                     super.onCloseFrame(websocket, frame)
-                    Log.d("WSS1", "closing socket")
+                    Log.e("WS1", "closing socket")
                 }
-                })
-                ws.connect()
-                ws.sendText("hello !")
-                ws.disconnect()
-
+            })
+            ws.connect()
+            ws.sendText("hello from ANDROID !")
+            ws.disconnect()
         }
     }
 }
