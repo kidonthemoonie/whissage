@@ -7,4 +7,5 @@
     <string name="enterMessage">Enter message</string>
     <string name="send">Send</string>
     <string name="testMessage">Hi, my message</string>
+    <string name="time">11:00 PM</string>
 </resources>

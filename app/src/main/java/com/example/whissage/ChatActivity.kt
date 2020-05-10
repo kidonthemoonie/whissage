@@ -40,6 +40,7 @@ class ChatActivity : AppCompatActivity() {
             sendButton.setOnClickListener(){
                 ws.sendText(textMessage.text.toString())
                 textMessage.text.clear()
+                textMessage.hint = " "
             }
         }
     }
