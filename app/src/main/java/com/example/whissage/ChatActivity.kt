@@ -35,7 +35,7 @@ class ChatActivity : AppCompatActivity() {
             ws.addListener(object : WebSocketAdapter() {
                 override fun onTextMessage(websocket: WebSocket, text: String) {
                     super.onTextMessage(websocket, text)
-                    Log.e("ws_s", text.toString())
+                    Log.e("get message: ", text)
                     if (text.isNotEmpty()) {
                         runOnUiThread {
                             adapter.addMessage(
@@ -48,7 +48,6 @@ class ChatActivity : AppCompatActivity() {
                             messageList.scrollToPosition(adapter.itemCount - 1);
                         }
                     }
-
                 }
 
                 override fun onCloseFrame(websocket: WebSocket?, frame: WebSocketFrame?) {
