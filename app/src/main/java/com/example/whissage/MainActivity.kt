@@ -3,8 +3,10 @@ package com.example.whissage
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.neovisionaries.ws.client.WebSocket
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +18,14 @@ class MainActivity : AppCompatActivity() {
         //run()
         val b = findViewById<Button>(R.id.skipButton)
         b.setOnClickListener {
-            val i = Intent(this, ChatActivity::class.java)
-            startActivity(i)
+            if (userEnter.text.isNotEmpty()) {
+                val user = userEnter.text.toString()
+                startActivity(Intent(this, ChatActivity::class.java))
+                App.user = user
+                startActivity(Intent(this@MainActivity, ChatActivity::class.java))
+            } else {
+                Toast.makeText(applicationContext,"Username should not be empty", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

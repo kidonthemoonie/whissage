@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/user"
+        android:id="@+id/userEnter"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
@@ -43,7 +43,7 @@
         android:inputType="textWebPassword"
         android:textColor="#FFFFFF"
         android:shadowColor="#120030"
-        app:layout_constraintTop_toBottomOf="@id/user"
+        app:layout_constraintTop_toBottomOf="@id/userEnter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
     
@@ -51,7 +51,7 @@
         android:id="@+id/skipButton"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="@string/skip"
+        android:text="@string/signIn"
         android:background="#120030"
         android:textColor="#FFFFFF"
         android:layout_marginBottom="45dp"

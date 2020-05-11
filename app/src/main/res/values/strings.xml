@@ -3,7 +3,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Log in</string>
-    <string name="skip">Skip</string>
+    <string name="signIn">Sign in</string>
     <string name="enterMessage">Enter message</string>
     <string name="send">Send</string>
     <string name="testMessage">Hi, my message</string>
