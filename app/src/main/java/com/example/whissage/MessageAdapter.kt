@@ -17,24 +17,25 @@ import java.util.*
 private const val VIEW_TYPE_MY_MESSAGE = 1
 private const val VIEW_TYPE_OTHER_MESSAGE = 2
 
-class MessageAdapter (private val context: Context): RecyclerView.Adapter<MessageViewHolder>(){
+class MessageAdapter(private val context: Context) : RecyclerView.Adapter<MessageViewHolder>() {
     private val messages: ArrayList<Message> = ArrayList()
 
-    fun addMessage(message: Message){
+    fun addMessage(message: Message) {
         messages.add(message)
         notifyDataSetChanged()
     }
 
-    inner class MyMessageViewHolder(view:View):MessageViewHolder(view){
+    inner class MyMessageViewHolder(view: View) : MessageViewHolder(view) {
         private var messageText: TextView = view.MyMessage
         private var messageTime: TextView = view.MyMessageTime
 
         override fun bind(message: Message) {
             messageText.text = message.message
             messageTime.text = fromMillisToTimeString(message.time)
+        }
     }
-}
-    inner class OtherMessageViewHolder(view:View):MessageViewHolder(view){
+
+    inner class OtherMessageViewHolder(view: View) : MessageViewHolder(view) {
         private var messageText: TextView = view.OtherMessage
         private var userText: TextView = view.OtherUser
         private var timeText: TextView = view.OtherMessageTime
@@ -53,16 +54,15 @@ class MessageAdapter (private val context: Context): RecyclerView.Adapter<Messag
     override fun getItemViewType(position: Int): Int {
         val message = messages[position]
 
-        return if(App.user == message.user) {
+        return if (App.user == message.user) {
             VIEW_TYPE_MY_MESSAGE
-        }
-        else {
+        } else {
             VIEW_TYPE_OTHER_MESSAGE
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        return if(viewType == VIEW_TYPE_MY_MESSAGE) {
+        return if (viewType == VIEW_TYPE_MY_MESSAGE) {
             MyMessageViewHolder(
                 LayoutInflater.from(context).inflate(R.layout.my_msg, parent, false)
             )
@@ -80,14 +80,14 @@ class MessageAdapter (private val context: Context): RecyclerView.Adapter<Messag
 
 }
 
-open class MessageViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    open fun bind(message:Message) {
+open class MessageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    open fun bind(message: Message) {
 
     }
 }
 
 object DateUtils {
-    fun fromMillisToTimeString(millis: Long) : String {
+    fun fromMillisToTimeString(millis: Long): String {
         val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
         return format.format(millis)
     }

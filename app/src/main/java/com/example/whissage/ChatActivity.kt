@@ -36,12 +36,12 @@ class ChatActivity : AppCompatActivity() {
                 override fun onTextMessage(websocket: WebSocket, text: String) {
                     super.onTextMessage(websocket, text)
                     Log.e("ws_s", text.toString())
-                    if(text.isNotEmpty()) {
+                    if (text.isNotEmpty()) {
                         runOnUiThread {
                             adapter.addMessage(
                                 Message(
                                     App.user,
-                                    text.toString(),
+                                    text,
                                     Calendar.getInstance().timeInMillis
                                 )
                             )
@@ -59,7 +59,7 @@ class ChatActivity : AppCompatActivity() {
 
             ws.connect()
 
-            sendButton.setOnClickListener(){
+            sendButton.setOnClickListener() {
                 ws.sendText(textMessage.text.toString())
                 textMessage.text.clear()
                 textMessage.hint = " "
