@@ -1,7 +1,10 @@
 package com.example.whissage
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +26,6 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
         val sendButton = findViewById<Button>(R.id.send)
         val textMessage = findViewById<EditText>(R.id.enter_mess)
-
         messageList.layoutManager = LinearLayoutManager(this)
         adapter = MessageAdapter(this)
         messageList.adapter = adapter
@@ -40,7 +42,7 @@ class ChatActivity : AppCompatActivity() {
                         runOnUiThread {
                             adapter.addMessage(
                                 Message(
-                                    App.user,
+                                    App.user0,
                                     text,
                                     Calendar.getInstance().timeInMillis
                                 )
@@ -62,8 +64,21 @@ class ChatActivity : AppCompatActivity() {
                 ws.sendText(textMessage.text.toString())
                 textMessage.text.clear()
                 textMessage.hint = " "
+                val inputManager =
+                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputManager.hideSoftInputFromWindow(
+                    currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
+                )
             }
         }
     }
+    override fun onBackPressed(){
+        super.onBackPressed()
+        var i = Intent(this, MainActivity::class.java)
+        startActivity(i)
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

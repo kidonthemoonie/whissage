@@ -42,7 +42,7 @@ class MessageAdapter(private val context: Context) : RecyclerView.Adapter<Messag
 
         override fun bind(message: Message) {
             messageText.text = message.message
-            userText.text = message.user
+            userText.text = message.user1
             timeText.text = fromMillisToTimeString(message.time)
         }
     }
@@ -54,7 +54,7 @@ class MessageAdapter(private val context: Context) : RecyclerView.Adapter<Messag
     override fun getItemViewType(position: Int): Int {
         val message = messages[position]
 
-        return if (App.user == message.user) {
+        return if (App.user0 == message.user1) {
             VIEW_TYPE_MY_MESSAGE
         } else {
             VIEW_TYPE_OTHER_MESSAGE
