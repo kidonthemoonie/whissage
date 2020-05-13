@@ -14,6 +14,7 @@ import com.neovisionaries.ws.client.WebSocketAdapter
 import com.neovisionaries.ws.client.WebSocketFactory
 import com.neovisionaries.ws.client.WebSocketFrame
 import kotlinx.android.synthetic.main.activity_chat.*
+import org.json.JSONObject
 import java.util.*
 import kotlin.concurrent.thread
 
@@ -42,7 +43,7 @@ class ChatActivity : AppCompatActivity() {
                         runOnUiThread {
                             adapter.addMessage(
                                 Message(
-                                    App.user0,
+                                    App.user,
                                     text,
                                     Calendar.getInstance().timeInMillis
                                 )
@@ -61,7 +62,13 @@ class ChatActivity : AppCompatActivity() {
             ws.connect()
 
             sendButton.setOnClickListener() {
-                ws.sendText(textMessage.text.toString())
+                val jsonObject: JSONObject =
+                val message = Message(
+                    jsonObject["user"].toString(),
+                    jsonObject["message"].toString(),
+                    jsonObject["time"].toString().toLong()
+                )
+                ws.sendText(message.toString())
                 textMessage.text.clear()
                 textMessage.hint = " "
                 val inputManager =
@@ -74,7 +81,7 @@ class ChatActivity : AppCompatActivity() {
     }
     override fun onBackPressed(){
         super.onBackPressed()
-        var i = Intent(this, MainActivity::class.java)
+        val i = Intent(this, MainActivity::class.java)
         startActivity(i)
     }
 

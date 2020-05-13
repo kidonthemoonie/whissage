@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             if (userEnter.text.isNotEmpty()) {
                 val user = userEnter.text.toString()
                 startActivity(Intent(this, ChatActivity::class.java))
-                App.user0 = user
+                App.user = user
             } else {
                 Toast.makeText(
                     applicationContext,
