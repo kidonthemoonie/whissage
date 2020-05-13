@@ -1,7 +1,6 @@
 package com.example.whissage
 
 import android.content.Context
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import com.example.whissage.DateUtils.fromMillisToTimeString
 import kotlinx.android.synthetic.main.my_msg.view.*
 import kotlinx.android.synthetic.main.other_msg.view.*
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 private const val VIEW_TYPE_MY_MESSAGE = 1

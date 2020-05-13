@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,9 +17,8 @@ class MainActivity : AppCompatActivity() {
         val b = findViewById<Button>(R.id.skipButton)
         b.setOnClickListener {
             if (userEnter.text.isNotEmpty()) {
-                val user = userEnter.text.toString()
+                App.user = userEnter.text.toString()
                 startActivity(Intent(this, ChatActivity::class.java))
-                App.user = user
             } else {
                 Toast.makeText(
                     applicationContext,
@@ -30,7 +28,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    override fun onBackPressed(){
+
+    override fun onBackPressed() {
         super.onBackPressed()
         finish()
     }

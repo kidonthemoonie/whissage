@@ -21,6 +21,7 @@ import kotlin.concurrent.thread
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var adapter: MessageAdapter
+    val ws = WebSocketFactory().createSocket("ws://185.185.70.69/ws/", 5000)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,23 +33,31 @@ class ChatActivity : AppCompatActivity() {
         messageList.adapter = adapter
 
         thread() {
-            val ws = WebSocketFactory().createSocket("ws://185.185.70.69/ws/", 5000)
-
             // Register a listener to receive WebSocket events.
             ws.addListener(object : WebSocketAdapter() {
                 override fun onTextMessage(websocket: WebSocket, text: String) {
                     super.onTextMessage(websocket, text)
                     Log.e("get message: ", text)
                     if (text.isNotEmpty()) {
+                        val message = Message("", "", 0)
+                        try {
+                            val jsonObject = JSONObject(text)
+                            message.user = jsonObject["user"].toString()
+                            message.message = jsonObject["message"].toString()
+                            message.time = jsonObject["time"].toString().toLong()
+                            Log.e("JSON MESSAGE ---->", message.message)
+                        } catch (e: Exception) {
+                            Log.e("MY ERROR in get message", e.toString())
+                        }
                         runOnUiThread {
                             adapter.addMessage(
                                 Message(
-                                    App.user,
-                                    text,
-                                    Calendar.getInstance().timeInMillis
+                                    message.user,
+                                    message.message,
+                                    message.time
                                 )
                             )
-                            messageList.scrollToPosition(adapter.itemCount - 1);
+                            messageList.scrollToPosition(adapter.itemCount - 1)
                         }
                     }
                 }
@@ -62,30 +71,35 @@ class ChatActivity : AppCompatActivity() {
             ws.connect()
 
             sendButton.setOnClickListener() {
-                val jsonObject: JSONObject =
-                val message = Message(
-                    jsonObject["user"].toString(),
-                    jsonObject["message"].toString(),
-                    jsonObject["time"].toString().toLong()
-                )
-                ws.sendText(message.toString())
-                textMessage.text.clear()
-                textMessage.hint = " "
-                val inputManager =
-                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputManager.hideSoftInputFromWindow(
-                    currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
-                )
+                try {
+                    val jsonObject = JSONObject()
+                    jsonObject.put("user", App.user)
+                    jsonObject.put("message", textMessage.text.toString())
+                    jsonObject.put("time", Calendar.getInstance().timeInMillis.toString())
+                    ws.sendText(jsonObject.toString())
+                    textMessage.text.clear()
+                    textMessage.hint = " "
+                    val inputManager =
+                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputManager.hideSoftInputFromWindow(
+                        currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
+                    )
+                } catch (e: Exception) {
+                    Log.e("MY ERROR in sendButton()", e.toString())
+                }
             }
         }
     }
-    override fun onBackPressed(){
+
+    override fun onBackPressed() {
+        ws.disconnect()
         super.onBackPressed()
         val i = Intent(this, MainActivity::class.java)
         startActivity(i)
     }
 
     override fun onDestroy() {
+        ws.disconnect()
         super.onDestroy()
     }
 }

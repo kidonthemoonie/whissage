@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#54279F">
+    android:background="@color/colorPrimaryDark"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:text="@string/login"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:layout_marginTop="200dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/userEnter"
@@ -26,9 +26,9 @@
         android:layout_marginTop="280dp"
         android:layout_marginEnd="65dp"
         android:hint="@string/username"
-        android:textColorHint="#FFFFFF"
         android:inputType="text"
         android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,23 +39,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="@string/password"
-        android:textColorHint="#FFFFFF"
         android:inputType="textWebPassword"
-        android:textColor="#FFFFFF"
         android:shadowColor="#120030"
-        app:layout_constraintTop_toBottomOf="@id/userEnter"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userEnter" />
+
     <Button
         android:id="@+id/skipButton"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="@string/signIn"
-        android:background="#120030"
-        android:textColor="#FFFFFF"
         android:layout_marginBottom="45dp"
+        android:background="#120030"
+        android:text="@string/signIn"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

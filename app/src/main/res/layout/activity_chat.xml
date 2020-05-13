@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#54279F"
+    android:background="@color/colorPrimary"
     tools:context=".ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,7 +14,7 @@
         android:layout_marginBottom="55dp"
         android:layout_marginStart="10dp"
         android:scrollbars="vertical"
-        android:background="#54279F"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -23,7 +23,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="2dp"
-        android:background="#542790"
+        android:background="@color/colorPrimary"
         android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toTopOf="@+id/layout_messageArea"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:minHeight="48dp"
-        android:background="#54279F"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
