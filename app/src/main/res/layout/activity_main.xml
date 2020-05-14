@@ -7,16 +7,15 @@
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="@string/login"
-        android:textColor="@color/colorSnow"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/theme_locker"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/userEnter"
+        android:contentDescription="@string/todo" />
 
 
     <EditText
