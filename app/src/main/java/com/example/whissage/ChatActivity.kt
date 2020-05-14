@@ -71,21 +71,23 @@ class ChatActivity : AppCompatActivity() {
             ws.connect()
 
             sendButton.setOnClickListener() {
-                try {
-                    val jsonObject = JSONObject()
-                    jsonObject.put("user", App.user)
-                    jsonObject.put("message", textMessage.text.toString())
-                    jsonObject.put("time", Calendar.getInstance().timeInMillis.toString())
-                    ws.sendText(jsonObject.toString())
-                    textMessage.text.clear()
-                    textMessage.hint = " "
-                    val inputManager =
-                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    inputManager.hideSoftInputFromWindow(
-                        currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
-                    )
-                } catch (e: Exception) {
-                    Log.e("MY ERROR in sendButton()", e.toString())
+                if(textMessage.text.toString().trim().isNotEmpty()){
+                    try {
+                        val jsonObject = JSONObject()
+                        jsonObject.put("user", App.user)
+                        jsonObject.put("message", textMessage.text.toString().trim())
+                        jsonObject.put("time", Calendar.getInstance().timeInMillis.toString())
+                        ws.sendText(jsonObject.toString())
+                        textMessage.text.clear()
+                        textMessage.hint = " "
+                        val inputManager =
+                            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputManager.hideSoftInputFromWindow(
+                            currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
+                        )
+                    } catch (e: Exception) {
+                        Log.e("MY ERROR in sendButton()", e.toString())
+                    }
                 }
             }
         }

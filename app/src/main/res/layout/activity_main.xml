@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,49 +12,43 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:text="@string/login"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorSnow"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/userEnter"
         android:layout_width="280dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="65dp"
+        android:background="@drawable/user_field"
         android:hint="@string/username"
+        android:importantForAutofill="no"
         android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:textAlignment="center"
+        android:textColor="@color/colorSnow"
+        android:textColorHighlight="#AB603A01"
+        android:textColorHint="@color/colorShade"
+        android:textColorLink="@color/colorSnow"
+        android:textCursorDrawable="@color/colorSnow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/pass"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="@string/password"
-        android:inputType="textWebPassword"
-        android:shadowColor="#120030"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userEnter" />
-
     <Button
         android:id="@+id/skipButton"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginBottom="45dp"
-        android:background="#120030"
+        android:textAlignment="center"
+        android:background="@drawable/button_bubble"
         android:text="@string/signIn"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorSnow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

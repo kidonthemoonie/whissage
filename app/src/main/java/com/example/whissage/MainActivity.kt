@@ -3,7 +3,9 @@ package com.example.whissage
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         //run()
         val b = findViewById<Button>(R.id.skipButton)
         b.setOnClickListener {
-            if (userEnter.text.isNotEmpty()) {
-                App.user = userEnter.text.toString()
+            if (userEnter.text.trim().isNotEmpty()) {
+                App.user = userEnter.text.trim().toString()
                 startActivity(Intent(this, ChatActivity::class.java))
             } else {
                 Toast.makeText(
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
-    }
+        onDestroy()
+        }
 
 }
